@@ -22,7 +22,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "upload-s3": "aws s3 sync build/ s3://todo-react-app-dfsjkl",
+    "invalidate-cf-cache": "aws cloudfront create-invalidation --distribution-id E2D0DW1L7VV92L --paths '/*'",
+    "deploy-s3": "npm run build && npm run upload-s3 && npm run invalidate-cf-cache"
   },
   "eslintConfig": {
     "extends": [
